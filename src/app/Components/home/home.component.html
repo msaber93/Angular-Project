@@ -1,1 +1,15 @@
-<p>home works!</p>
+<!-- intterpolation -->
+<!-- <img src="{{storeInfo.imgUrl}}" alt=""> -->
+<!-- Property-Binding -->
+
+<img *ngIf="isImageShown" [src]="storeInfo.imgUrl" alt="">
+<button class="btn btn-primary" (click)="toggleImage()">toggle Image</button>
+<h1>{{storeInfo.name}}</h1>
+<h3>Our Branches:</h3>
+
+<!-- structural Directives -->
+<ul>
+  <li *ngFor="let item of storeInfo.branches">
+    {{item}}
+  </li>
+</ul>
