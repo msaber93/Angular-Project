@@ -1,44 +1,74 @@
-<div class="mb-3">
+<!-- <div class="mb-3">
   <label for="" class="form-label">Category</label>
-  <select class="form-select form-select-lg" name="cat" id="prdCat" [(ngModel)]="selectedCatID">
-    <option *ngFor="let cat of prdCat" [value]="cat.id">{{cat.name}}</option>
+  <select class="form-select form-select-lg" name="cat" id="prdCat" [(ngModel)]="selectedCatID"
+    (change)="filterProductByCatID()" >
+    <option *ngFor="let cat of prdCat" [value]="cat.id">{{ cat.name }}</option>
   </select>
-</div>
-<div class="text-secondary">
+</div> -->
+<!-- <div class="text-secondary">
   To Be Removed For Test:
-  {{selectedCatID}} <br>
+  {{ selectedCatID }} <br />
   <button class="btn btn-primary" (click)="changeCtg()">Change Category</button>
-</div>
-<hr>
+  <br>
+  Order's Date : {{orderDate | date : 'short'}}
+</div> -->
+<hr />
 <div class="table-responsive">
   <table class="table table-primary">
     <thead>
       <tr>
-        <th>ID</th>
+        <th>No.</th>
         <th>Name</th>
         <th>Image</th>
         <th>AV. Quantity</th>
-        <th>Price</th>
+        <th>Price in USD</th>
+        <th>Price in EGP</th>
         <th>Count</th>
         <th>Buy</th>
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let product of prdList" [class.bg-info]="product.quantity == 0"
-      [style]="(product.categoryID == 0) ? 'cornflowerblue' : 'green'">
-        <td>{{product.id}}</td>
-        <td>{{product.name}}</td>
-        <td><img [src]="product.imgURL" alt=""></td>
-        <td>{{product.quantity}}</td>
-        <td>{{product.price}}</td>
+      <!-- <tr *ngFor="let product of prdList; let i = index" [class.bg-info]="product.quantity == 0"
+      [style]="(product.categoryID == 0) ? 'cornflowerblue' : 'green'"> -->
+      <!-- <tr *ngFor="let product of prdList; let i = index" [hidden]="product.quantity == 0"> -->
+      <!-- <ng-container *ngFor="let product of prdList; let i = index"> -->
+      <!-- <tr *ngIf="product.quantity != 0"> -->
+      <tr
+        *ngFor="let product of prdListOfCat; let i = index" [ngStyle]="{'background-color': product.quantity == 0 ? 'lightyellow' : 'lightgrey' }" >
+        <td>{{ i + 1 }}</td>
+        <td>{{ product.name }}</td>
+        <td><img LightBox="red" highLightColor="gray" [src]="product.imgURL" alt="" /></td>
+        <!-- <td><img LightBox="red" [src]="product.imgURL" alt="" /></td> -->
+        <td>
+          <!-- <div *ngIf="product.quantity != 0; else outofstock">{{ product.quantity }}</div>
+          <ng-template #outofstock>Out of Stock</ng-template> -->
+          <div [ngSwitch]="product.quantity">
+            <div *ngSwitchCase="0">Out of Stock</div>
+            <div *ngSwitchCase="1">Last Item</div>
+            <div *ngSwitchDefault>{{product.quantity}}</div>
+          </div>
+        </td>
+        <!-- custom pipes -->
+        <td>{{ product.price | currency: 'USD' }}</td>
+        <td>{{ product.price | USDtoEGP | currency : 'EGP' : 'code'}}</td>
+        <!-- custom pipes -->
+
         <!-- Template-Variables -->
-        <td><input #itemCount type="number" class="form-control"></td>
+        <td><input #itemCount type="number" class="form-control" /></td>
         <!-- Template-Variables -->
-        <td><button type="button" class="btn btn-outline-primary" (click)="buy(product.price, itemCount.value)">Buy</button>
+        <td>
+          <button
+            type="button"
+            class="btn btn-outline-primary"
+            (click)="buy(product.price, itemCount.value)"
+          >
+            Buy
+          </button>
         </td>
       </tr>
     </tbody>
   </table>
 </div>
-<h3>Order Total Price: {{orderTotalPrice}}</h3>
-
+<h3>
+  [to be Removed] for Test : <br>
+  Order Total Price: {{ orderTotalPrice }}</h3>
