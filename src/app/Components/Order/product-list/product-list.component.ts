@@ -1,4 +1,4 @@
-import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, Output, SimpleChanges } from '@angular/core';
 import 'bootstrap';
 import { IProduct } from 'src/app/Models/iproduct';
 
@@ -11,9 +11,11 @@ export class ProductListComponent implements OnChanges {
   prdList: IProduct[];
   prdListOfCat: IProduct[] = [];
   @Input() sentCatID: number = 0;
+  @Output() totalPriceChanged: EventEmitter<number>;
   orderTotalPrice: number = 0;
   orderDate: Date;
   constructor() {
+    this.totalPriceChanged = new EventEmitter<number>();
     this.prdList = [
       {id: 100, name: 'Lenovo IdeaPad', price: 600, quantity: 2, imgURL: 'https://fakeimg.pl/200x100/', categoryID: 1 },
       {id: 110, name: 'HP Laptop', price: 500, quantity: 0, imgURL: 'https://fakeimg.pl/200x100/', categoryID: 1 },
@@ -32,7 +34,8 @@ export class ProductListComponent implements OnChanges {
   buy(productPrice: number, count: string ) {
       // this.orderTotalPrice = parseInt(count)* productPrice;
       // this.orderTotalPrice = Number (count)* productPrice;
-      this.orderTotalPrice = +count * productPrice;
+      this.orderTotalPrice += +count * productPrice;
+      this.totalPriceChanged.emit(this.orderTotalPrice);
   }
   // changeCtg() {
   //   this.selectedCatID = 1;
