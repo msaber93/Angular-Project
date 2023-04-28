@@ -24,7 +24,8 @@
         <th>Price in USD</th>
         <th>Price in EGP</th>
         <th>Count</th>
-        <th>Buy</th>
+        <th>Details</th>
+        <th>Add</th>
       </tr>
     </thead>
     <tbody>
@@ -56,15 +57,9 @@
         <!-- Template-Variables -->
         <td><input #itemCount type="number" class="form-control" /></td>
         <!-- Template-Variables -->
-        <td>
-          <button
-            type="button"
-            class="btn btn-outline-primary"
-            (click)="buy(product.price, itemCount.value)"
-          >
-            Buy
-          </button>
-        </td>
+        <!-- <td> <button type="button" class="btn btn-outline-primary" (click)="openPrdDetails(product.id)">Details</button></td> -->
+        <td><a class="btn btn-primary" [routerLink]="['/Products', product.id]" role="button">Button</a></td>
+        <td> <button type="button" class="btn btn-outline-primary" (click)="buy(product.price, itemCount.value)">Add to Cart</button></td>
       </tr>
     </tbody>
   </table>

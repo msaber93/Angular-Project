@@ -13,6 +13,10 @@ import { LightBoxDirective } from './Directives/light-box.directive';
 import { USDtoEGPPipe } from './pipes/usdto-egp.pipe';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { OrdermasterComponent } from './Components/Order/ordermaster/ordermaster.component';
+import { MainLayoutComponent } from './Components/Main-Layout/Main-Layout.component';
+import { NotFoundComponent } from './Components/Not-Found/Not-Found.component';
+import { UserLoginComponent } from './Components/User-Login/User-Login.component';
+import { ProductDetailsComponent } from './Components/Order/product-details/product-details.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +28,11 @@ import { OrdermasterComponent } from './Components/Order/ordermaster/ordermaster
     ProductListComponent,
     LightBoxDirective,
     USDtoEGPPipe,
-    OrdermasterComponent
+    OrdermasterComponent,
+    MainLayoutComponent,
+    NotFoundComponent,
+    UserLoginComponent,
+    ProductDetailsComponent
   ],
   imports: [
     BrowserModule,
