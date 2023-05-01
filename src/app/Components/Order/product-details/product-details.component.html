@@ -1,1 +1,11 @@
-<p>product-details works!</p>
+<div class="card" style="width: 18rem;">
+  <img [src]="prd?.imgURL" class="card-img-top" alt="...">
+  <div class="card-body">
+    <h5 class="card-title">{{prd?.name}}</h5>
+    <div class="card-text">
+      <div>{{prd?.price}}</div>
+      <div>{{prd?.quantity}}</div>
+    </div>
+    <a href="#" class="btn btn-primary" (click)="goBack()">Go Back</a>
+  </div>
+</div>

@@ -58,7 +58,7 @@
         <td><input #itemCount type="number" class="form-control" /></td>
         <!-- Template-Variables -->
         <!-- <td> <button type="button" class="btn btn-outline-primary" (click)="openPrdDetails(product.id)">Details</button></td> -->
-        <td><a class="btn btn-primary" [routerLink]="['/Products', product.id]" role="button">Button</a></td>
+        <td><a class="btn btn-primary" [routerLink]="['/Products', product.id]" role="button">Details</a></td>
         <td> <button type="button" class="btn btn-outline-primary" (click)="buy(product.price, itemCount.value)">Add to Cart</button></td>
       </tr>
     </tbody>
