@@ -17,6 +17,7 @@ const routes: Routes = [
     {path: 'Products/:pid', component: ProductDetailsComponent}
   ]},
   {path: 'Login', component: UserLoginComponent},
+  {path: 'Logout', component: UserLoginComponent},
   {path: '**', component: NotFoundComponent} // wild card path and it must be in the last
 ];
 
