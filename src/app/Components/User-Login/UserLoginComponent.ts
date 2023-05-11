@@ -1,13 +1,16 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { UserAuthService } from 'src/app/Services/user-auth.service';
+
+
 
 @Component({
   selector: 'app-User-Login',
-  templateUrl: './User-Login.component.html',
+  templateUrl: `./User-Login.component.html`,
   styleUrls: ['./User-Login.component.css']
 })
 export class UserLoginComponent implements OnInit {
-  isUserLogged : boolean = false;
+  isUserLogged: boolean = false;
   constructor(private authServices: UserAuthService) { }
 
   ngOnInit() {
@@ -23,5 +26,10 @@ export class UserLoginComponent implements OnInit {
     this.authServices.logout();
     this.isUserLogged = this.authServices.isUserLogged;
   }
+
+
+
+
+
 
 }

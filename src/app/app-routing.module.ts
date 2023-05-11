@@ -5,8 +5,9 @@ import { ProductListComponent } from './Components/Order/product-list/product-li
 import { OrdermasterComponent } from './Components/Order/ordermaster/ordermaster.component';
 import { NotFoundComponent } from './Components/Not-Found/Not-Found.component';
 import { MainLayoutComponent } from './Components/Main-Layout/Main-Layout.component';
-import { UserLoginComponent } from './Components/User-Login/User-Login.component';
+import { UserLoginComponent } from './Components/User-Login/UserLoginComponent';
 import { ProductDetailsComponent } from './Components/Order/product-details/product-details.component';
+import { UserRegisterComponent } from './Components/user-register/user-register.component';
 
 const routes: Routes = [
   {path: '', component: MainLayoutComponent , children : [
@@ -17,6 +18,7 @@ const routes: Routes = [
     {path: 'Products/:pid', component: ProductDetailsComponent}
   ]},
   {path: 'Login', component: UserLoginComponent},
+  {path: 'Register', component: UserRegisterComponent},
   {path: 'Logout', component: UserLoginComponent},
   {path: '**', component: NotFoundComponent} // wild card path and it must be in the last
 ];
